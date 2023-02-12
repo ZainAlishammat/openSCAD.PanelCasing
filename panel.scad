@@ -1,7 +1,6 @@
-use <MCAD/boxes.scad>
+use<MCAD/boxes.scad>
 use<vesaBracket.scad>
 use<standFoot.scad>
-use <vesaMount.scad>
 
 
 
@@ -82,13 +81,17 @@ module panelCasing (){
 		if(_holesWanted){
 			
 			// screw_up_right 
-		translate([screw_X ,screw_Y ,screw_Z]) cylinder(h=base_thickness, r = screw_radius, center=true);
+		translate([screw_X ,screw_Y ,screw_Z]) 
+		cylinder(h=base_thickness, r = screw_radius, center=true);
 		// screw_up_left
-		translate([-screw_X ,screw_Y ,screw_Z]) cylinder(h=base_thickness, r = screw_radius, center=true);
+		translate([-screw_X ,screw_Y ,screw_Z]) 
+		cylinder(h=base_thickness, r = screw_radius, center=true);
 		// screw_down_right
-		translate([screw_X, -screw_Y, screw_Z]) cylinder(h=base_thickness, r = screw_radius, center=true);
+		translate([screw_X, -screw_Y, screw_Z]) 
+		cylinder(h=base_thickness, r = screw_radius, center=true);
 		// screw_down_left
-		translate([-screw_X, -screw_Y, screw_Z]) cylinder(h=base_thickness, r = screw_radius, center=true);			
+		translate([-screw_X, -screw_Y, screw_Z]) 
+		cylinder(h=base_thickness, r = screw_radius, center=true);			
 				}
 		
 		}
@@ -105,11 +108,22 @@ rear cover template
 		
 					difference(){
 
-						roundedBox(size = [base_width, base_hight, base_thickness],radius = roundedEdge ,sidesonly=true);
-						translate([0, 0, panel_thickness])roundedBox(size = [panel_width, panel_hight, base_thickness],radius = 0.5 ,sidesonly=true);
-						translate([0,0,panel_thickness])roundedBox(size=[panel_width+frame_thickness /2,panel_hight-frame_thickness*2,base_thickness],radius=0.5,sidesonly=true);
-						translate([0,0,panel_thickness])roundedBox(size=[panel_width-frame_thickness*2,panel_hight+frame_thickness/2,base_thickness],radius=0.5,sidesonly=true);
-						translate([-(panelPlugXPos-(panel_width/2)+panelPlugWidth/2),- (base_hight -(base_hight- panel_hight))/2,  base_thickness/4])roundedBox(size=[panelPlugWidth, (base_hight-panel_hight)+1, base_thickness/2+0.2], radius=0.2, sidesonly=true);
+						roundedBox(size = [base_width, base_hight,
+						 base_thickness],
+						radius = roundedEdge ,sidesonly=true);
+						translate([0, 0, panel_thickness])roundedBox
+						(size = [panel_width, panel_hight, base_thickness],
+						radius = 0.5 ,sidesonly=true);
+						translate([0, 0, panel_thickness])roundedBox
+						(size=[panel_width+frame_thickness /2,panel_hight-frame_thickness*2,base_thickness]
+						,radius=0.5,sidesonly=true);
+						translate([0, 0, panel_thickness])roundedBox
+						(size=[panel_width-frame_thickness*2,panel_hight+frame_thickness/2,base_thickness]
+						,radius=0.5,sidesonly=true);
+						translate([-(panelPlugXPos-(panel_width/2)+panelPlugWidth/2),- 
+						(base_hight -(base_hight- panel_hight))/2,  base_thickness/4])roundedBox
+						(size=[panelPlugWidth, (base_hight-panel_hight)+1, base_thickness/2+0.2], 
+						radius=0.2, sidesonly=true);
 				}
 				
 			}		
@@ -134,7 +148,8 @@ screw hole  template for the front cover
 	module screwHoleTemplateFrontCover() {
 		
 		linear_extrude(frontCover_thickness/2) circle(r = screwHead_radius);
-		translate([0,0, frontCover_thickness/2 - overlapRate])cylinder(h =frontCover_thickness/2+0.2, r=screw_radius);		
+		translate([0,0, frontCover_thickness/2 - overlapRate])cylinder(h =
+		frontCover_thickness/2+0.2, r=screw_radius);		
 
 	}	
 
@@ -148,8 +163,11 @@ front conver
 	
 			difference(){
 			
-				roundedBox(size = [base_width, base_hight, frontCover_thickness],radius = roundedEdge ,sidesonly=true);
-				translate([0, panelUnder_hight - e, 0])roundedBox(size = [display_width, display_hight , frontCover_thickness + 1],radius = roundedEdge ,sidesonly=true);
+				roundedBox(size = [base_width, base_hight, frontCover_thickness],radius = 
+				roundedEdge ,sidesonly=true);
+				translate([0, panelUnder_hight - e, 0])
+				roundedBox(size = [display_width, display_hight , frontCover_thickness + 1]
+				,radius = roundedEdge ,sidesonly=true);
 	
 			}
 		}
@@ -187,7 +205,7 @@ front conver
 	
 		module vesaHoles () {
 			
-			cylinder(h=base_thickness*2,r=3.2/2,center=true);
+			cylinder(h=base_thickness*2,r=vesaThroughhole/2,center=true);
 		
 					}
 				if(_vesaMountWanted) {

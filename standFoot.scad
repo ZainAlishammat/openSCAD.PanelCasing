@@ -1,16 +1,16 @@
 
 
 
-columnThickness_X = 15;
-columnThickness_Y =10;
-columnHight=150;
-footLength=100;
-footWidth=8;
+columnThickness_X = 15; // [1:50]
+columnThickness_Y =10; // [1:50]
+columnHight=150; // [10:500]
+footLength=100; // [10:500]
+footWidth=8; // [1:100]
 
-footHight_1=7;
-footHight_2=5;
+footHight_1=7; // [1:100]
+footHight_2=5; // [1:100]
 
-holeRadius=2.5;
+holeRadius=2.5; // [1:6]
 	
 	
 	
@@ -27,7 +27,8 @@ module standFoot(standWanted = true){
 
 		translate([-columnThickness_X/2,0,0])minkowski() {
 			rotate([90,0,0])linear_extrude(columnThickness_Y,center=true){
-			polygon([[0,0],[columnThickness_X,0],[polygonP,columnHight],[polygonP2,columnHight],[0,0]]);
+			polygon([[0,0],[columnThickness_X,0],[polygonP,columnHight],
+			[polygonP2,columnHight],[0,0]]);
 			}
 			cylinder(r=0.2,h=0.001);
 		}
@@ -39,7 +40,8 @@ module standFoot(standWanted = true){
 
 		minkowski() {
 			rotate([90,0,-45])linear_extrude(footWidth,center=true){
-			polygon([[0,0],[footLength,0],[footLength,footHight_2],[0,footHight_1],[0,0]]);
+			polygon([[0,0],[footLength,0],[footLength,footHight_2],
+			[0,footHight_1],[0,0]]);
 			}
 			cylinder(r=1,h=0.001);
 		}
@@ -51,7 +53,8 @@ module standFoot(standWanted = true){
 	if(standWanted){
 			difference(){
 			e();
-			translate([(polygonP-5-(columnThickness_X/2)),0,columnHight-2.5-2])rotate([90,0,0])cylinder(r=holeRadius,h=columnThickness_Y+1,center=true);
+			translate([(polygonP-5-(columnThickness_X/2)),0,columnHight-2.5-2])
+			rotate([90,0,0])cylinder(r=holeRadius,h=columnThickness_Y+1,center=true);
 	}
 		
 			r();
