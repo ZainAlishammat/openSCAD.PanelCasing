@@ -1,5 +1,5 @@
 # openSCAD panel case
-Make and adjust your panel case with openSCAD.
+Make and adjust your panel case with openSCAD.~
 I'm offering hier open source 3d modelles that i wrote and built in OpenSCAD.
 You can download them and adjust them how you like.
 ~~~
